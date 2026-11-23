@@ -14,6 +14,7 @@ No download. No account. No excuses.
 
 - 🗺️ **A custom map.** Pick Python, JavaScript, Java, C#, Go or Rust, plus how many weeks and hours you've got. Floors get due dates.
 - 🐸 **The Safe Room.** Pip, the keeper, tells you exactly what to do today. No staring at a blank screen wondering where to start.
+- 📚 **Bite-sized lessons, right in the app.** A plain-English explanation, the key points, and a tiny example you can run with one click. No 40-page docs to dig through. Stuck on an exercise? Hit **Show me an example** to see a similar problem solved.
 - ⌨️ **A real code editor.** Python and JavaScript run right in the browser. Infinite loop? We kill it after 8 seconds. You're welcome.
 - 🧙 **AI code reviews.** What works, what's broken (ranked), what to study next. Hints, not answers. You're here to learn, not copy.
 - 🎁 **Loot boxes, XP, levels, streaks.** Plus a boss floor every 4th floor. Streaks forgive 2 missed days a week, because life.
