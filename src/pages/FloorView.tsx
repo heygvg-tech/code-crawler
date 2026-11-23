@@ -11,6 +11,8 @@ import type { RunResult } from "../lib/runner";
 import CodeEditor from "../components/CodeEditor";
 import ReviewCard from "../components/ReviewCard";
 import LootBox from "../components/LootBox";
+import LessonCard from "../components/LessonCard";
+import ExampleBlock from "../components/ExampleBlock";
 
 type Celebration = { review: Review; xp: number; nextHref: string; nextLabel: string };
 
@@ -29,6 +31,8 @@ export default function FloorView({ progress, floorId, update }: { progress: Pro
   const [reviewing, setReviewing] = useState(false);
   const [reviewError, setReviewError] = useState("");
   const [party, setParty] = useState<Celebration | null>(null);
+  const [openLesson, setOpenLesson] = useState(() => Math.max(0, floor?.details?.lessons.findIndex((l) => !l.done) ?? 0));
+  const [showExample, setShowExample] = useState(false);
   const started = useRef(false); // stops double-generating in React dev mode
 
   const patchFloor = (p: Progress, fn: (f: Floor) => Floor): Progress => ({
@@ -89,6 +93,11 @@ export default function FloorView({ progress, floorId, update }: { progress: Pro
   }
 
   function toggleLesson(i: number) {
+    const lessons = floor?.details?.lessons ?? [];
+    if (!lessons[i]?.done) {
+      const nextOpen = lessons.findIndex((l, j) => j > i && !l.done);
+      setOpenLesson(nextOpen); // -1 closes all when you've finished them
+    }
     update((p) => {
       const f = p.floors.find((x) => x.id === floorId);
       if (!f?.details) return p;
@@ -195,20 +204,20 @@ export default function FloorView({ progress, floorId, update }: { progress: Pro
         <>
           <section className="panel">
             <h3>📚 Lessons</h3>
-            <ul className="lessons">
+            <p className="muted small">Read these first. Each one takes a couple of minutes.</p>
+            <div className="lessons">
               {floor.details.lessons.map((l, i) => (
-                <li key={i} className={l.done ? "done" : ""}>
-                  <input type="checkbox" checked={l.done} onChange={() => toggleLesson(i)} aria-label={`Mark "${l.title}" done`} />
-                  <div>
-                    <a href={l.url} target="_blank" rel="noreferrer">
-                      {l.title} ↗
-                    </a>
-                    <span className="muted small"> · {l.source}</span>
-                    <p className="small">{l.summary}</p>
-                  </div>
-                </li>
+                <LessonCard
+                  key={i}
+                  lesson={l}
+                  index={i}
+                  open={openLesson === i}
+                  fallbackLang={lang}
+                  onToggle={() => setOpenLesson(openLesson === i ? -1 : i)}
+                  onDone={() => toggleLesson(i)}
+                />
               ))}
-            </ul>
+            </div>
           </section>
 
           <section className="panel">
@@ -220,6 +229,18 @@ export default function FloorView({ progress, floorId, update }: { progress: Pro
                 <li key={i}>☐ {d}</li>
               ))}
             </ul>
+            {floor.details.exercise.example &&
+              (showExample ? (
+                <ExampleBlock
+                  code={floor.details.exercise.example}
+                  language={floor.details.lessons[0]?.exampleLang ?? lang}
+                  label="A SIMILAR PROBLEM, SOLVED"
+                />
+              ) : (
+                <button className="btn ghost" onClick={() => setShowExample(true)}>
+                  💡 Show me an example
+                </button>
+              ))}
           </section>
 
           <CodeEditor value={code} onChange={onCodeChange} language={lang} />
