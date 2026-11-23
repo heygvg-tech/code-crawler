@@ -1,0 +1,39 @@
+[
+  { "id": "py-tutorial", "lang": "Python", "source": "Python docs", "title": "The Official Python Tutorial", "url": "https://docs.python.org/3/tutorial/index.html", "tags": ["basics", "strings"] },
+  { "id": "py-controlflow", "lang": "Python", "source": "Python docs", "title": "More Control Flow Tools", "url": "https://docs.python.org/3/tutorial/controlflow.html", "tags": ["conditionals", "loops", "functions"] },
+  { "id": "py-datastructures", "lang": "Python", "source": "Python docs", "title": "Data Structures (lists, dicts, sets)", "url": "https://docs.python.org/3/tutorial/datastructures.html", "tags": ["collections", "dicts"] },
+  { "id": "py-errors", "lang": "Python", "source": "Python docs", "title": "Errors and Exceptions", "url": "https://docs.python.org/3/tutorial/errors.html", "tags": ["errors"] },
+  { "id": "py-classes", "lang": "Python", "source": "Python docs", "title": "Classes", "url": "https://docs.python.org/3/tutorial/classes.html", "tags": ["classes"] },
+  { "id": "py-cs50p", "lang": "Python", "source": "Harvard CS50P", "title": "CS50's Introduction to Programming with Python", "url": "https://cs50.harvard.edu/python/", "tags": ["basics", "conditionals", "loops", "functions", "errors", "classes"] },
+  { "id": "py-automate", "lang": "Python", "source": "Automate the Boring Stuff", "title": "Automate the Boring Stuff with Python", "url": "https://automatetheboringstuff.com/", "tags": ["basics", "strings", "projects"] },
+  { "id": "py-exercism", "lang": "Python", "source": "Exercism", "title": "Exercism Python Track (practice problems)", "url": "https://exercism.org/tracks/python", "tags": ["practice", "projects"] },
+
+  { "id": "js-info-first", "lang": "JavaScript", "source": "javascript.info", "title": "JavaScript Fundamentals", "url": "https://javascript.info/first-steps", "tags": ["basics", "strings", "conditionals", "loops", "functions"] },
+  { "id": "js-info-objects", "lang": "JavaScript", "source": "javascript.info", "title": "Objects: the basics", "url": "https://javascript.info/object-basics", "tags": ["dicts", "classes"] },
+  { "id": "js-mdn-grammar", "lang": "JavaScript", "source": "MDN", "title": "Grammar and Types", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types", "tags": ["basics", "strings"] },
+  { "id": "js-mdn-control", "lang": "JavaScript", "source": "MDN", "title": "Control Flow and Error Handling", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling", "tags": ["conditionals", "errors"] },
+  { "id": "js-mdn-loops", "lang": "JavaScript", "source": "MDN", "title": "Loops and Iteration", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration", "tags": ["loops"] },
+  { "id": "js-mdn-functions", "lang": "JavaScript", "source": "MDN", "title": "Functions", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions", "tags": ["functions"] },
+  { "id": "js-mdn-arrays", "lang": "JavaScript", "source": "MDN", "title": "Indexed Collections (arrays)", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections", "tags": ["collections"] },
+  { "id": "js-mdn-objects", "lang": "JavaScript", "source": "MDN", "title": "Working with Objects", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects", "tags": ["dicts"] },
+  { "id": "js-mdn-classes", "lang": "JavaScript", "source": "MDN", "title": "Using Classes", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_classes", "tags": ["classes"] },
+  { "id": "js-eloquent", "lang": "JavaScript", "source": "Eloquent JavaScript", "title": "Eloquent JavaScript (free book)", "url": "https://eloquentjavascript.net/", "tags": ["basics", "functions", "projects"] },
+  { "id": "js-odin", "lang": "JavaScript", "source": "The Odin Project", "title": "The Odin Project: Foundations", "url": "https://www.theodinproject.com/paths/foundations/courses/foundations", "tags": ["practice", "projects"] },
+  { "id": "js-exercism", "lang": "JavaScript", "source": "Exercism", "title": "Exercism JavaScript Track (practice problems)", "url": "https://exercism.org/tracks/javascript", "tags": ["practice", "projects"] },
+
+  { "id": "java-dev", "lang": "Java", "source": "dev.java", "title": "Learn Java (official)", "url": "https://dev.java/learn/", "tags": ["basics", "conditionals", "loops", "functions", "collections", "classes", "errors"] },
+  { "id": "java-mooc", "lang": "Java", "source": "University of Helsinki", "title": "Java Programming MOOC", "url": "https://java-programming.mooc.fi/", "tags": ["basics", "loops", "collections", "classes", "projects"] },
+  { "id": "java-exercism", "lang": "Java", "source": "Exercism", "title": "Exercism Java Track", "url": "https://exercism.org/tracks/java", "tags": ["practice", "projects"] },
+
+  { "id": "cs-tour", "lang": "C#", "source": "Microsoft Learn", "title": "A Tour of C#", "url": "https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/", "tags": ["basics", "conditionals", "loops", "classes"] },
+  { "id": "cs-docs", "lang": "C#", "source": "Microsoft Learn", "title": "C# Documentation", "url": "https://learn.microsoft.com/en-us/dotnet/csharp/", "tags": ["functions", "collections", "errors", "dicts"] },
+  { "id": "cs-exercism", "lang": "C#", "source": "Exercism", "title": "Exercism C# Track", "url": "https://exercism.org/tracks/csharp", "tags": ["practice", "projects"] },
+
+  { "id": "go-tour", "lang": "Go", "source": "go.dev", "title": "A Tour of Go", "url": "https://go.dev/tour/", "tags": ["basics", "conditionals", "loops", "functions", "collections", "dicts"] },
+  { "id": "go-byexample", "lang": "Go", "source": "Go by Example", "title": "Go by Example", "url": "https://gobyexample.com/", "tags": ["basics", "strings", "errors", "classes"] },
+  { "id": "go-exercism", "lang": "Go", "source": "Exercism", "title": "Exercism Go Track", "url": "https://exercism.org/tracks/go", "tags": ["practice", "projects"] },
+
+  { "id": "rust-book", "lang": "Rust", "source": "The Rust Book", "title": "The Rust Programming Language", "url": "https://doc.rust-lang.org/book/", "tags": ["basics", "conditionals", "loops", "functions", "collections", "errors", "classes"] },
+  { "id": "rust-example", "lang": "Rust", "source": "Rust by Example", "title": "Rust by Example", "url": "https://doc.rust-lang.org/rust-by-example/", "tags": ["basics", "strings", "dicts"] },
+  { "id": "rust-exercism", "lang": "Rust", "source": "Exercism", "title": "Exercism Rust Track", "url": "https://exercism.org/tracks/rust", "tags": ["practice", "projects"] }
+]
