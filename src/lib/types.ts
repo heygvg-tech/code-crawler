@@ -19,9 +19,25 @@ export type Crawler = {
   startDate: string; // YYYY-MM-DD
 };
 
-export type Lesson = { title: string; summary: string; url: string; source: string; done: boolean };
+// A bite-sized lesson taught right in the app. The link is optional "go deeper" reading.
+export type Lesson = {
+  title: string;
+  explain: string; // 2-4 plain-English sentences
+  keyPoints: string[]; // the stuff worth remembering
+  example: string; // tiny code example
+  exampleLang: Language; // which language the example is in
+  url?: string;
+  source?: string;
+  done: boolean;
+  summary?: string; // older saves used this instead of explain
+};
 
-export type Exercise = { prompt: string; starterCode: string; doneWhen: string[] };
+export type Exercise = {
+  prompt: string;
+  starterCode: string;
+  doneWhen: string[];
+  example?: string; // a SIMILAR problem, fully solved, revealed on request
+};
 
 export type FloorStatus = "locked" | "active" | "cleared";
 

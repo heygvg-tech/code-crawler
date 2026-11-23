@@ -31,9 +31,11 @@ export function validateOutline(x: unknown): OutlineFloor[] {
   return floors;
 }
 
+export type RawLesson = { title: string; explain: string; keyPoints: string[]; example: string; resourceId: string };
+
 export type RawFloorDetails = {
-  lessons: { title: string; summary: string; resourceId: string }[];
-  exercise: { prompt: string; starterCode: string; doneWhen: string[] };
+  lessons: RawLesson[];
+  exercise: { prompt: string; starterCode: string; doneWhen: string[]; example: string };
 };
 
 export function validateFloorDetails(x: unknown): RawFloorDetails {
@@ -41,9 +43,12 @@ export function validateFloorDetails(x: unknown): RawFloorDetails {
     throw new ValidationError('Expected {"lessons": [...], "exercise": {...}}');
   const lessons = x.lessons.filter(isObj).map((l) => ({
     title: str(l.title, "lesson title"),
-    summary: typeof l.summary === "string" ? l.summary : "",
+    explain: str(l.explain, "lesson explain"),
+    keyPoints: Array.isArray(l.keyPoints) ? strArr(l.keyPoints, "keyPoints", 0) : [],
+    example: typeof l.example === "string" ? l.example.replace(/\s+$/, "") : "",
     resourceId: typeof l.resourceId === "string" ? l.resourceId : "",
   }));
+  if (lessons.length === 0) throw new ValidationError("No lessons returned");
   const e = x.exercise;
   return {
     lessons,
@@ -51,6 +56,7 @@ export function validateFloorDetails(x: unknown): RawFloorDetails {
       prompt: str(e.prompt, "exercise prompt"),
       starterCode: typeof e.starterCode === "string" ? e.starterCode : "",
       doneWhen: strArr(e.doneWhen, "doneWhen"),
+      example: typeof e.example === "string" ? e.example.replace(/\s+$/, "") : "",
     },
   };
 }

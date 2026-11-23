@@ -5,7 +5,7 @@ import { getApiKey } from "./storage";
 import { buildFloors, endDateFor, floorCountFor } from "./game";
 import { daysBetween, todayISO } from "./dates";
 import { RUNNABLE } from "./types";
-import type { Crawler, Floor, Lesson, Progress, Review } from "./types";
+import type { Crawler, Floor, Language, Lesson, Progress, Review } from "./types";
 import { validateFloorDetails, validateOutline, validateReplan, validateReview } from "./validate";
 import type { OutlineFloor, RawReplan } from "./validate";
 import { demoFloorDetails, demoOutline, demoReplan, demoReview } from "../data/demo";
@@ -70,13 +70,15 @@ export async function generateFloorDetails(p: Progress, floor: Floor): Promise<N
         validateFloorDetails,
       );
 
-  // Only keep lessons that point at a real curated resource: no made-up links.
-  const lessons: Lesson[] = raw.lessons.flatMap((l) => {
+  // Demo examples only exist in Python and JavaScript; other languages see Python (same idea, and it runs).
+  const exampleLang: Language = isDemo() && !RUNNABLE.includes(crawler.language) ? "Python" : crawler.language;
+
+  // The lesson itself is taught in the app. A "go deeper" link is only kept
+  // if it points at a real curated resource: no made-up links.
+  const lessons: Lesson[] = raw.lessons.map((l) => {
     const r = pool.find((x) => x.id === l.resourceId);
-    return r ? [{ title: l.title, summary: l.summary, url: r.url, source: r.source, done: false }] : [];
+    return { title: l.title, explain: l.explain, keyPoints: l.keyPoints, example: l.example, exampleLang, url: r?.url, source: r?.source, done: false };
   });
-  if (lessons.length === 0 && pool[0])
-    lessons.push({ title: pool[0].title, summary: "Start here for this floor's concepts.", url: pool[0].url, source: pool[0].source, done: false });
 
   return { lessons, exercise: raw.exercise };
 }
